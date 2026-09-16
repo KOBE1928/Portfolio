@@ -1,0 +1,26 @@
+Rudra Priye — how to get a public link (free, no Grok upgrade)
+
+This folder is a complete website. You do not need the Grok Publish button.
+
+EASIEST — Netlify Drop (keeps this exact design)
+1. Unzip this folder on your computer.
+2. Open https://app.netlify.com/drop in a browser.
+3. Drag the unzipped folder (the one that contains index.html) onto the page.
+4. Wait a few seconds. Netlify gives you a public link like https://random-name.netlify.app
+5. Share that link. Sign up free if they ask you to keep the site.
+
+GOOGLE SITES (if school wants sites.google.com)
+1. Open https://sites.google.com and sign in with your school Google account.
+2. Create a blank site. Name it e.g. aboutmerudrapriye
+3. Insert → Embed → By URL, paste your Netlify link from above.
+   OR copy the text from index.html into pages: Home, About, PCM, Court, Training, Record.
+4. Click Publish. Google gives you:
+   https://sites.google.com/view/aboutmerudrapriye/home
+
+OTHER FREE OPTIONS
+- GitHub Pages (needs a free GitHub account)
+- Cloudflare Pages
+- Tiiny.host — upload the zip
+
+Do not open index.html only on your computer and send that file path.
+That is not public. Upload the folder first, then share the https link.

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rudra Priye</title>
+  <meta name="description" content="Student portfolio of Rudra Priye — Class XI, section M1, PCM. Basketball, strength training, and the academic record in between." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0c0d0c;
+      --elevated: #131513;
+      --surface: #191b19;
+      --fg: #eceae4;
+      --muted: #8f918a;
+      --subtle: #6a6c66;
+      --accent: #c9d1c4;
+      --accent-fg: #0c0d0c;
+      --line: #2a2c2a;
+      --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+      --font-display: "Fraunces", "Times New Roman", serif;
+      --shadow: 0 0 0 1px rgba(236, 234, 228, 0.08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--bg); color: var(--fg); -webkit-font-smoothing: antialiased; }
+    body { margin: 0; font-family: var(--font-sans); line-height: 1.55; background: var(--bg); color: var(--fg); }
+    h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.03em; line-height: 1.12; text-wrap: balance; font-weight: 500; }
+    p { text-wrap: pretty; }
+    a { color: inherit; text-decoration: none; }
+    button, [role="button"] { cursor: pointer; font-family: inherit; }
+    img { max-width: 100%; display: block; outline: 1px solid rgba(236,234,228,.1); outline-offset: -1px; }
+    ::selection { background: var(--accent); color: var(--accent-fg); }
+    .wrap { max-width: 72rem; margin: 0 auto; padding: 0 1.5rem; }
+    header {
+      position: fixed; inset: 0 0 auto; z-index: 50; height: 4rem;
+      display: flex; align-items: center;
+      transition: background .2s ease, box-shadow .2s ease;
+    }
+    header.scrolled, header.open { background: rgba(12,13,12,.92); box-shadow: var(--shadow); backdrop-filter: blur(12px); }
+    .nav-row { width: 100%; max-width: 72rem; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; }
+    .brand { display: flex; align-items: center; gap: .65rem; font-weight: 500; }
+    .mono { width: 2rem; height: 2rem; display: grid; place-items: center; background: var(--accent); color: var(--accent-fg); font-family: var(--font-display); font-size: .85rem; border-radius: 2px; }
+    nav.desk { display: none; gap: .15rem; }
+    nav.desk a { padding: .5rem .75rem; font-size: .9rem; color: var(--muted); border-radius: 6px; }
+    nav.desk a:hover, nav.desk a.active { color: var(--fg); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; min-height: 44px; padding: 0 1.2rem; border: 0; border-radius: 6px; font-size: .9rem; font-weight: 500; background: var(--accent); color: var(--accent-fg); }
+    .btn:hover { background: var(--fg); }
+    .btn.ghost { background: transparent; color: var(--fg); box-shadow: var(--shadow); }
+    .btn.ghost:hover { background: var(--surface); }
+    .icon-btn { width: 44px; height: 44px; background: transparent; border: 0; color: var(--fg); display: grid; place-items: center; }
+    .mobile { display: none; border-top: 1px solid var(--line); background: var(--bg); }
+    .mobile a { display: flex; min-height: 44px; align-items: center; border-bottom: 1px solid rgba(42,44,42,.6); padding: 0 1.5rem; }
+    header.open .mobile { display: block; }
+    .hero { position: relative; min-height: 100dvh; overflow: hidden; display: flex; align-items: flex-end; }
+    .hero img.bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .hero .veil { position: absolute; inset: 0; background: linear-gradient(to top, var(--bg) 8%, rgba(12,13,12,.45) 50%, rgba(12,13,12,.25)); }
+    .hero-inner { position: relative; width: 100%; max-width: 72rem; margin: 0 auto; padding: 7rem 1.5rem 5rem; }
+    .kicker { font-size: .72rem; font-weight: 500; letter-spacing: .28em; text-transform: uppercase; color: var(--accent); }
+    .sec-kicker { font-size: .72rem; font-weight: 500; text-transform: uppercase; color: var(--muted); }
+    .sec-kicker .n { color: var(--accent); letter-spacing: 0; }
+    .sec-kicker .slash { margin: 0 .75rem; color: var(--subtle); }
+    .sec-kicker .lab { letter-spacing: .2em; }
+    h1 { font-size: clamp(4.2rem, 12vw, 7.5rem); line-height: .88; margin: 1.1rem 0 0; font-style: italic; }
+    h1 span { display: block; font-style: normal; }
+    .lead { max-width: 28rem; margin: 1.4rem 0 0; font-size: 1.1rem; color: rgba(236,234,228,.85); }
+    .actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }
+    .stats { display: grid; grid-template-columns: 1fr 1fr; border-block: 1px solid var(--line); }
+    .stats div { padding: 1.4rem 1.5rem; }
+    .stats dt { font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
+    .stats dd { margin: .4rem 0 0; font-family: var(--font-display); font-size: 1.6rem; }
+    .stats div:nth-child(odd) { border-right: 1px solid var(--line); }
+    .stats div:nth-child(n+3) { border-top: 1px solid var(--line); }
+    section { scroll-margin-top: 5rem; }
+    .block { max-width: 72rem; margin: 0 auto; padding: 5rem 1.5rem; }
+    .split { display: grid; gap: 2.5rem; }
+    .muted { color: var(--muted); }
+    .cards { display: grid; gap: 1rem; margin-top: 2.2rem; }
+    .card { background: var(--surface); box-shadow: var(--shadow); border-radius: 12px; padding: 1.2rem 1.3rem; }
+    .card .tiny { font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
+    figure { margin: 0; overflow: hidden; border-radius: 12px; background: var(--surface); }
+    figure img { width: 100%; height: 100%; object-fit: cover; min-height: 16rem; }
+    figcaption { padding: .8rem 1rem; font-size: .75rem; letter-spacing: .04em; color: var(--muted); }
+    .tabs, .filters { display: flex; flex-wrap: wrap; gap: .5rem; margin: 2rem 0 1rem; }
+    .tabs button, .filters button {
+      min-height: 44px; padding: 0 1rem; border: 0; border-radius: 6px;
+      background: var(--surface); color: var(--muted); font-weight: 500; font-size: .9rem;
+    }
+    .filters button { border-radius: 999px; }
+    .tabs button.on, .filters button.on { background: var(--accent); color: var(--accent-fg); }
+    .panel { background: var(--surface); box-shadow: var(--shadow); border-radius: 12px; padding: 1.6rem 1.8rem; }
+    .panel[hidden], .rec[hidden] { display: none; }
+    .focus { display: grid; gap: .5rem; margin: 1.2rem 0 0; }
+    .focus li { border-left: 1px solid rgba(201,209,196,.4); padding-left: .75rem; font-size: .9rem; color: rgba(236,234,228,.85); list-style: none; }
+    .mini { display: grid; grid-template-columns: repeat(3, 1fr); gap: .7rem; margin-top: 1.8rem; }
+    .mini div { text-align: center; background: var(--surface); box-shadow: var(--shadow); border-radius: 8px; padding: .9rem .4rem; }
+    .mini dt { font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+    .mini dd { margin: .25rem 0 0; font-size: .85rem; font-weight: 500; }
+    table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+    .table-wrap { overflow: auto; background: var(--surface); box-shadow: var(--shadow); border-radius: 12px; margin-top: 2.2rem; }
+    th { text-align: left; font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); font-weight: 500; padding: .8rem 1.4rem; border-bottom: 1px solid var(--line); }
+    td { padding: .9rem 1.4rem; border-bottom: 1px solid rgba(42,44,42,.7); }
+    tr:last-child td { border-bottom: 0; }
+    .principles { display: grid; gap: 1rem; margin-top: 2rem; }
+    .principles article { background: var(--elevated); box-shadow: var(--shadow); border-radius: 12px; padding: 1.3rem; }
+    .record { border-block: 1px solid var(--line); margin-top: 2rem; }
+    .rec { display: grid; gap: .6rem; padding: 1.4rem 0; border-bottom: 1px solid var(--line); }
+    .rec:last-child { border-bottom: 0; }
+    .year { font-family: var(--font-display); font-size: 1.25rem; color: var(--accent); margin: 0; }
+    .tag { width: fit-content; border-radius: 999px; background: var(--surface); padding: .2rem .75rem; font-size: .72rem; color: var(--muted); }
+    .skills { display: grid; gap: 1rem; margin-top: 2rem; }
+    .skills article { background: var(--elevated); box-shadow: var(--shadow); border-radius: 12px; padding: 1.2rem; }
+    .skills h3 { font-family: var(--font-sans); font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); margin: 0 0 .6rem; }
+    .skills ul { margin: 0; padding: 0; list-style: none; font-size: .9rem; }
+    .skills li { padding: .15rem 0; }
+    form, .thanks { background: var(--surface); box-shadow: var(--shadow); border-radius: 12px; padding: 1.6rem; }
+    label { display: block; font-size: .75rem; font-weight: 500; letter-spacing: .04em; color: var(--muted); margin-bottom: .4rem; }
+    input, textarea {
+      width: 100%; min-height: 44px; margin-bottom: 1rem; border: 0; border-radius: 6px;
+      background: var(--elevated); color: var(--fg); padding: 0 1rem; box-shadow: var(--shadow); font-family: inherit;
+    }
+    textarea { min-height: 8rem; padding: .8rem 1rem; }
+    footer { border-top: 1px solid var(--line); }
+    .foot { max-width: 72rem; margin: 0 auto; padding: 2.4rem 1.5rem; display: flex; flex-direction: column; gap: .7rem; }
+    .how { max-width: 72rem; margin: 0 auto; padding: 0 1.5rem 3rem; color: var(--muted); font-size: .9rem; }
+    .how a { color: var(--accent); text-decoration: underline; }
+    @media (min-width: 640px) {
+      .stats { grid-template-columns: repeat(4, 1fr); }
+      .stats div { border-right: 1px solid var(--line) !important; border-top: 0 !important; }
+      .stats div:last-child { border-right: 0 !important; }
+      .cards { grid-template-columns: 1fr 1fr; }
+      .principles { grid-template-columns: 1fr 1fr; }
+      .skills { grid-template-columns: 1fr 1fr; }
+      .rec { grid-template-columns: 5.5rem 1fr auto; align-items: baseline; gap: 1.5rem; }
+      .foot { flex-direction: row; justify-content: space-between; align-items: flex-end; }
+    }
+    @media (min-width: 1024px) {
+      nav.desk { display: flex; }
+      .icon-btn { display: none; }
+      .cta-desk { display: inline-flex; }
+      .split { grid-template-columns: 1.1fr .9fr; gap: 3.5rem; align-items: start; }
+      .split.rev { grid-template-columns: .9fr 1.1fr; }
+      .skills { grid-template-columns: repeat(4, 1fr); }
+      .note { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+    }
+    @media (max-width: 1023px) { .cta-desk { display: none; } .brand span.name { display: none; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <header id="bar">
+    <div class="nav-row">
+      <a class="brand" href="#top"><span class="mono">RP</span><span class="name">Rudra Priye</span></a>
+      <nav class="desk" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#academics">PCM</a>
+        <a href="#court">Court</a>
+        <a href="#training">Training</a>
+        <a href="#record">Record</a>
+        <a href="#week">Week</a>
+        <a href="#note">Note</a>
+      </nav>
+      <div style="display:flex;gap:.4rem;align-items:center">
+        <a class="btn cta-desk" href="#note">Write a note</a>
+        <button class="icon-btn" id="menuBtn" type="button" aria-label="Open menu">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h14M4 12h14M4 17h14"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="mobile" id="mobile">
+      <a href="#about">About</a>
+      <a href="#academics">PCM</a>
+      <a href="#court">Court</a>
+      <a href="#training">Training</a>
+      <a href="#record">Record</a>
+      <a href="#week">Week</a>
+      <a href="#note">Note</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <img class="bg" src="images/hero-court.jpg" alt="Empty indoor basketball court at night" />
+      <div class="veil"></div>
+      <div class="hero-inner">
+        <p class="kicker">Student portfolio · 2026</p>
+        <h1>Rudra<span>Priye</span></h1>
+        <p class="lead">Class XI, section M1. Physics, Chemistry, Mathematics. A week split between a notebook, a hardwood floor, and a barbell.</p>
+        <div class="actions">
+          <a class="btn" href="#about">Read the record</a>
+          <a class="btn ghost" href="#court">On the court</a>
+        </div>
+      </div>
+    </section>
+
+    <dl class="stats wrap" style="max-width:72rem;padding:0;width:100%">
+      <div><dt>Class & section</dt><dd>XI · M1</dd></div>
+      <div><dt>Stream</dt><dd>PCM</dd></div>
+      <div><dt>Basketball</dt><dd>SG / Wing</dd></div>
+      <div><dt>Strength block</dt><dd>4-day</dd></div>
+    </dl>
+
+    <section id="about">
+      <div class="block split">
+        <div>
+          <p class="sec-kicker"><span class="n">01</span><span class="slash">/</span><span class="lab">About</span></p>
+          <h2 style="font-size:clamp(2rem,5vw,3rem);margin:.8rem 0 0">Ordinary days, done on purpose.</h2>
+          <div class="muted" style="margin-top:1.6rem;display:grid;gap:1.1rem;font-size:1.05rem">
+            <p>I’m Rudra Priye, sixteen, in Class 11 section M1, studying PCM. This page is the version of an “about me” I actually recognise — not a list of adjectives, a record of how the week is spent.</p>
+            <p>School takes the morning. Physics numericals take the evening. Basketball takes whatever is left in the legs. Strength training is the unglamorous middle: chalk, a notebook of loads, and the decision not to skip just because a test is coming. I am not trying to be two different people. The same habits have to work in a classroom and in a gym.</p>
+            <p>I like problems with a clean answer. A free throw. A derivation. A lift done with a quiet back. The rest of life is noisier. Those three things keep the week honest.</p>
+          </div>
+          <div class="cards">
+            <div class="card"><p class="tiny">Now</p><p>First year of senior secondary. Building a PCM foundation and earning minutes as a wing on the school side.</p></div>
+            <div class="card"><p class="tiny">North star</p><p>Leave Class 12 with a body that holds up, a file of solved problems I can defend, and a game that still looks like mine.</p></div>
+          </div>
+        </div>
+        <figure>
+          <img src="images/study-desk.jpg" alt="Night study desk with physics notes and a lamp" />
+          <figcaption>The desk after practice. Notes first, then sleep.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="academics" style="border-top:1px solid var(--line)">
+      <div class="block">
+        <div class="split rev">
+          <figure>
+            <img src="images/chalkboard.jpg" alt="Chalkboard with mechanics diagrams" />
+            <figcaption>Mechanics is the chapter I keep returning to.</figcaption>
+          </figure>
+          <div>
+            <p class="sec-kicker"><span class="n">02</span><span class="slash">/</span><span class="lab">Academics · PCM</span></p>
+            <h2 style="font-size:clamp(2rem,5vw,3rem);margin:.8rem 0 0">Three subjects. One standard.</h2>
+            <p class="muted" style="margin-top:1.1rem;max-width:36rem">I am not a prodigy. I am a student who treats the syllabus like a season: you do not skip training because the match is next month. You show up for the unglamorous units too.</p>
+          </div>
+        </div>
+        <div class="tabs" role="tablist">
+          <button type="button" class="on" data-tab="physics">Physics</button>
+          <button type="button" data-tab="chemistry">Chemistry</button>
+          <button type="button" data-tab="maths">Mathematics</button>
+        </div>
+        <div class="panel" data-panel="physics">
+          <p class="kicker">Mechanics first</p>
+          <h3>Physics</h3>
+          <p>The subject that finally made basketball feel like a laboratory.</p>
+          <p class="muted">Class 11 physics is where I live most evenings. Kinematics, Newton’s laws, work-energy, and circular motion are not abstract to me — they are the language of a jump shot, a cut, a landing. I work NCERT line by line, then step into HC Verma for the problems that actually hurt. I keep a separate notebook for derivations so I can rebuild them from memory the next morning, the same way I rebuild a shooting form in an empty gym.</p>
+          <ul class="focus">
+            <li>Vectors, motion in a plane, projectile range as a court problem</li>
+            <li>Laws of motion and free-body diagrams under fatigue</li>
+            <li>Work, energy, power — why a stronger squat changes a first step</li>
+            <li>System of particles, centre of mass, rotational motion (current)</li>
+          </ul>
+        </div>
+        <div class="panel" data-panel="chemistry" hidden>
+          <p class="kicker">Structure before tricks</p>
+          <h3>Chemistry</h3>
+          <p>I used to treat chemistry as a memory subject. That was a mistake I am still undoing.</p>
+          <p class="muted">Physical chemistry is where I am most comfortable — mole concept, stoichiometry, states of matter, thermodynamics. Inorganic I drill with tables I rewrite myself; organic I am learning to see as patterns, not a pile of reactions. Lab work is the part I do not skip: if I cannot explain what the apparatus is doing, I do not count the experiment as done. The aim is not speed. It is to stop guessing.</p>
+        </div>
+        <div class="panel" data-panel="maths" hidden>
+          <p class="kicker">Clean lines</p>
+          <h3>Mathematics</h3>
+          <p>Maths is the quietest hour of my day, and the most unforgiving.</p>
+          <p class="muted">Sets, relations, trigonometric identities, straight lines, conic sections, and the first stretch of limits and derivatives. I like problems that look short and are not. I time my practice sets the way I time shooting drills — a fixed number, a fixed window, no phone. Coordinate geometry is my favourite unit so far; calculus is the one I am trying to make as natural as a free throw routine.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="court" style="border-top:1px solid var(--line)">
+      <div class="block split">
+        <div>
+          <p class="sec-kicker"><span class="n">03</span><span class="slash">/</span><span class="lab">Basketball</span></p>
+          <h2 style="font-size:clamp(2rem,5vw,3rem);margin:.8rem 0 0">Wing. Shooting guard. Last four minutes.</h2>
+          <div class="muted" style="margin-top:1.2rem;display:grid;gap:1rem">
+            <p>I play on the wing — shooting guard by label, cutter and closer by habit. I am not the tallest body in a zone. I am the one who wants the ball when the scoreboard is ugly. Catch-and-shoot from the corners, a growing weak-hand finish, and a free-throw routine I do not change even when the gym is loud.</p>
+            <p>Practice is not a highlight tape. Two hundred makes. Closeout footwork. Screens I used to bump instead of read. Film, when we have it, is more useful than praise. I keep a small book: shots taken, turnovers, how my legs felt in the third quarter. The point is not to look busy. It is to know what actually broke.</p>
+            <p>Competitions this year are house matches, a zonal invitational, and whatever inter-school friendlies the calendar gives us. I care less about the medal photograph than about whether I still make the simple play when I am tired.</p>
+          </div>
+          <dl class="mini">
+            <div><dt>Position</dt><dd>SG / wing</dd></div>
+            <div><dt>Range</dt><dd>Corners first</dd></div>
+            <div><dt>Tell</dt><dd>Free throws</dd></div>
+          </dl>
+        </div>
+        <div style="display:grid;gap:1rem">
+          <figure><img src="images/basketball.jpg" alt="Worn basketball on a hardwood court" /></figure>
+          <figure>
+            <img src="images/outdoor-court.jpg" alt="Outdoor school court at dusk" />
+            <figcaption>The outdoor court after last period. Quiet is useful.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="training" style="border-top:1px solid var(--line)">
+      <div class="block">
+        <div class="split">
+          <div>
+            <p class="sec-kicker"><span class="n">04</span><span class="slash">/</span><span class="lab">Strength training</span></p>
+            <h2 style="font-size:clamp(2rem,5vw,3rem);margin:.8rem 0 0">Iron as a skill, not a costume.</h2>
+            <p class="muted" style="margin-top:1.1rem">I started lifting because basketball made the gaps obvious: first step, landing, holding a box-out in the fourth quarter. The programme is four lifting days in a normal week, built around squats, hinges, presses, pull-ups, and carries. I add load slowly. I film the main lifts. If the bar path is ugly, the weight comes off. Size is not the goal. A body that still works in February is.</p>
+            <p class="muted">Warm-ups are not optional. Hips, ankles, T-spine, then empty-bar work. After the main set I do what the sport needs that week — split squats, calf raises, anti-rotation. I eat like a student who trains, which means I actually eat: protein at every meal, water that is not only during practice, sleep that I defend the night before a test as fiercely as the night before a match.</p>
+          </div>
+          <figure>
+            <img src="images/gym-barbell.jpg" alt="Barbell on a platform in a dark gym" />
+            <figcaption>The bar does not care about a long school day.</figcaption>
+          </figure>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Lift</th><th>Role</th><th>Note</th></tr></thead>
+            <tbody>
+              <tr><td>Back squat</td><td>Primary lower</td><td>Depth and brace before adding plates</td></tr>
+              <tr><td>Romanian deadlift</td><td>Posterior chain</td><td>Hamstrings for sprinting and landing</td></tr>
+              <tr><td>Bench / floor press</td><td>Upper push</td><td>Controlled eccentrics, no bounce</td></tr>
+              <tr><td>Weighted pull-up</td><td>Upper pull</td><td>Strict reps; bands when needed</td></tr>
+              <tr><td>Split squat</td><td>Single-leg</td><td>Knee tracking, court-specific</td></tr>
+              <tr><td>Farmer carry</td><td>Trunk / grip</td><td>Long walks, quiet core</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="principles">
+          <article><h3>Show up tired</h3><p class="muted">School does not wait for a perfect night of sleep. Training does not wait either. The standard is to do the work on ordinary days, not only on motivated ones.</p></article>
+          <article><h3>Form over load</h3><p class="muted">A sloppy squat is not training, it is a future injury. I film the main lifts when I can. If the bar path is ugly, the weight comes down.</p></article>
+          <article><h3>Study like a drill</h3><p class="muted">One topic, one problem set, one review. I do not stack five chapters and call it a session. Depth beats a highlight reel of unfinished notes.</p></article>
+          <article><h3>Recover on purpose</h3><p class="muted">Sunday is not a void. Mobility, a long walk, cooking at home, rewriting the week. Rest is part of the programme, not a leak in it.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="record" style="border-top:1px solid var(--line)">
+      <div class="block">
+        <p class="sec-kicker"><span class="n">05</span><span class="slash">/</span><span class="lab">Competitions</span></p>
+        <h2 style="font-size:clamp(2rem,5vw,3rem);margin:.8rem 0 0">The record, not the résumé.</h2>
+        <p class="muted" style="max-width:28rem;margin-top:.8rem">School-level. Honest. Includes the papers I did not finish the way I wanted.</p>
+        <div class="filters">
+          <button type="button" class="on" data-filter="All">All</button>
+          <button type="button" data-filter="Basketball">Basketball</button>
+          <button type="button" data-filter="Training">Training</button>
+          <button type="button" data-filter="Academics">Academics</button>
+          <button type="button" data-filter="Athletics">Athletics</button>
+        </div>
+        <div class="record">
+          <article class="rec" data-tag="Basketball"><p class="year">2026</p><div><h3>Inter-house basketball — senior category</h3><p class="muted">School courts</p><p class="muted">Playing as a wing in section fixtures. Focus this year is decision-making in the last four minutes, not just scoring in the first.</p></div><span class="tag">Basketball</span></article>
+          <article class="rec" data-tag="Basketball"><p class="year">2026</p><div><h3>Zonal school invitational</h3><p class="muted">District venue</p><p class="muted">Short, physical games against teams we do not see every week. I keep a private sheet: turnovers, closeouts, and how my legs felt in the third quarter.</p></div><span class="tag">Basketball</span></article>
+          <article class="rec" data-tag="Athletics"><p class="year">2025–26</p><div><h3>Annual sports meet</h3><p class="muted">School ground</p><p class="muted">Basketball exhibition plus a relay. Sports day is noisy; I treat it as a test of whether training holds when the crowd is louder than the whistle.</p></div><span class="tag">Athletics</span></article>
+          <article class="rec" data-tag="Academics"><p class="year">2025</p><div><h3>Intra-school science exhibition</h3><p class="muted">Senior wing</p><p class="muted">A working model of projectile motion using a basketball release angle. Judges asked why the optimum is not 45° on a court. That conversation was the point.</p></div><span class="tag">Academics</span></article>
+          <article class="rec" data-tag="Academics"><p class="year">2025</p><div><h3>Mathematics olympiad — school round</h3><p class="muted">Class 10 into 11</p><p class="muted">Did not finish the paper the way I wanted. The useful part was the error log: geometry under time pressure is still a hole I am filling in Class 11.</p></div><span class="tag">Academics</span></article>
+          <article class="rec" data-tag="Training"><p class="year">2025</p><div><h3>Inter-class strength & conditioning challenge</h3><p class="muted">School gym</p><p class="muted">Pull-ups, a 2 km loop, and a farmer carry. I did not win the room. I did finish without changing the plan mid-event, which is the habit I actually wanted.</p></div><span class="tag">Training</span></article>
+          <article class="rec" data-tag="Basketball"><p class="year">2024–25</p><div><h3>Inter-house basketball — junior to senior bridge</h3><p class="muted">School courts</p><p class="muted">Runners-up with the house side. First year I was trusted to run a set in the fourth quarter. That trust is the thing I am trying to deserve again.</p></div><span class="tag">Basketball</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="week" style="border-top:1px solid var(--line)">
+      <div class="block">
+        <p class="sec-kicker"><span class="n">06</span><span class="slash">/</span><span class="lab">A working week</span></p>
+        <h2 style="font-size:clamp(2rem,5vw,3rem);margin:.8rem 0 0">How the hours actually go.</h2>
+        <p class="muted" style="max-width:36rem;margin-top:.8rem">This is a map, not a prison. Tests move practice. Matches move maths. The rule is that something still happens — a shorter session, not a vanished one.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Day</th><th>Desk</th><th>Body</th></tr></thead>
+            <tbody>
+              <tr><td>Mon</td><td>Physics — numericals + derivation rewrite</td><td>Upper strength · mobility</td></tr>
+              <tr><td>Tue</td><td>Mathematics — timed problem set</td><td>Team practice · shooting 200 makes</td></tr>
+              <tr><td>Wed</td><td>Chemistry — theory + exercises</td><td>Lower strength · posterior chain</td></tr>
+              <tr><td>Thu</td><td>Physics — mixed chapter review</td><td>Skill work: footwork, closeouts, free throws</td></tr>
+              <tr><td>Fri</td><td>PCM — weekly error log</td><td>Team scrimmage or conditioning</td></tr>
+              <tr><td>Sat</td><td>Maths / chemistry backlog</td><td>Full-body strength or match day</td></tr>
+              <tr><td>Sun</td><td>Notes, sleep, family</td><td>Walk, stretch, plan the next seven days</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="skills">
+          <article><h3>On the court</h3><ul><li>Catch-and-shoot</li><li>Weak-hand finishes</li><li>Closeouts</li><li>Screen navigation</li><li>Free-throw routine</li></ul></article>
+          <article><h3>In the gym</h3><ul><li>Barbell squatting</li><li>Hinge patterning</li><li>Pull-up strength</li><li>Conditioning intervals</li><li>Mobility work</li></ul></article>
+          <article><h3>At the desk</h3><ul><li>Numericals under a clock</li><li>Derivation from memory</li><li>Lab records</li><li>Error logs</li><li>Graphing by hand</li></ul></article>
+          <article><h3>How I work</h3><ul><li>Time blocking</li><li>Showing up sore</li><li>Film / form checks</li><li>Asking one better question</li><li>Keeping a week plan</li></ul></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="note" style="border-top:1px solid var(--line)">
+      <div class="block note">
+        <div>
+          <p class="sec-kicker"><span class="n">07</span><span class="slash">/</span><span class="lab">A note</span></p>
+          <h2 style="font-size:clamp(2rem,5vw,3rem);margin:.8rem 0 0">Teachers, teammates, family — write here.</h2>
+          <p class="muted" style="margin-top:1.1rem;max-width:28rem">This is a school portfolio, not a public inbox. Messages stay on this device so I can show them in class or pass them along. If you know me from the court or from M1, say which.</p>
+        </div>
+        <form id="noteForm">
+          <label for="name">Name</label>
+          <input id="name" name="name" required placeholder="Your name" />
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required placeholder="you@school.edu" />
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required placeholder="A note for Rudra…"></textarea>
+          <button class="btn" type="submit">Send note</button>
+        </form>
+        <div class="thanks" id="thanks" hidden>
+          <h3 style="font-style:italic;font-size:2rem;margin:0">Received.</h3>
+          <p class="muted">The note is saved on this device. If you need a reply the same day, find me after last period or after practice.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="foot">
+      <div>
+        <p style="font-family:var(--font-display);font-size:1.25rem;font-style:italic;margin:0">Rudra Priye</p>
+        <p class="muted" style="margin:.3rem 0 0;font-size:.9rem">Class XI · Section M1 · PCM</p>
+      </div>
+      <p style="font-size:.75rem;color:var(--subtle);margin:0">A personal record of school, the court, and the work in between.</p>
+    </div>
+  </footer>
+
+  <script>
+    const bar = document.getElementById("bar");
+    const menuBtn = document.getElementById("menuBtn");
+    menuBtn.addEventListener("click", () => bar.classList.toggle("open"));
+    document.querySelectorAll("#mobile a").forEach((a) => a.addEventListener("click", () => bar.classList.remove("open")));
+    addEventListener("scroll", () => bar.classList.toggle("scrolled", scrollY > 12), { passive: true });
+
+    document.querySelectorAll(".tabs button").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".tabs button").forEach((b) => b.classList.toggle("on", b === btn));
+        document.querySelectorAll("[data-panel]").forEach((p) => { p.hidden = p.dataset.panel !== btn.dataset.tab; });
+      });
+    });
+
+    document.querySelectorAll(".filters button").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".filters button").forEach((b) => b.classList.toggle("on", b === btn));
+        const tag = btn.dataset.filter;
+        document.querySelectorAll(".rec").forEach((row) => {
+          row.hidden = tag !== "All" && row.dataset.tag !== tag;
+        });
+      });
+    });
+
+    document.getElementById("noteForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(e.target));
+      const notes = JSON.parse(localStorage.getItem("rp-notes") || "[]");
+      notes.push({ ...data, at: new Date().toISOString() });
+      localStorage.setItem("rp-notes", JSON.stringify(notes));
+      e.target.hidden = true;
+      document.getElementById("thanks").hidden = false;
+    });
+  </script>
+</body>
+</html>

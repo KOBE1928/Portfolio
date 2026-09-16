@@ -1,0 +1,38 @@
+{
+  "url": "http://127.0.0.1:8081/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Rudra Priye",
+      "hasCanvas": false,
+      "bodyTextLen": 8474,
+      "bodyTextHash": "608fae63dfffd6605e587fe7f849d6b750c986b2a24278406cf13a188360a7dd",
+      "bodyTextPrefix": "Skip to content RP Rudra Priye About PCM Court Training Record W",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Rudra Priye",
+      "hasCanvas": false,
+      "bodyTextLen": 8211,
+      "bodyTextHash": "597046d2e5981fb0fadf9f8756e0790ac5de88309ca5d17cde5f480f4eac9d98",
+      "bodyTextPrefix": "Skip to content RP STUDENT PORTFOLIO · 2026 Rudra Priye Class XI",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-built.json",
+  "divergesFromBaseline": false,
+  "baselineReasons": []
+}
